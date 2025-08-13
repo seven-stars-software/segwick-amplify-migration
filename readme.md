@@ -1,0 +1,2 @@
+# Pro Audio Voices Migration to Segwick
+This is a place to store documentation, notes and scripts relevant to migrating Pro Audio Voices off of their current Wordpress/WooCommerce platform and onto Segwick.
