@@ -13,6 +13,7 @@ Currently stored in Wordpress through the WooCommerce plugin. Data structure and
                └─────►│ORDER├─X   └────►│PRODUCT│
                       └─────┘           └───────┘    
 ```
+<sub>Chart made with [ASCIIFlow](https://asciiflow.com/)</sub>
 
 ## Product Vendors
 Pro Audio Voices uses the [WooCommerce Vendor extension](https://woocommerce.com/products/product-vendors/) to provide product management tools for authors and publishers. This introduces Vendors, essentially store fronts with names and admin users.

@@ -1,0 +1,7 @@
+{
+    "name": "amplify-segwick-migration",
+  "version": "1.0.0",
+  "scripts": {
+    "add-user": "node --env-file=.env user-migration.js"
+  }
+}
