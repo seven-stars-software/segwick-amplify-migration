@@ -3,9 +3,8 @@
 Migration of Pro Audio Voices from WordPress/WooCommerce to Segwik CRM.
 
 **Strategy:** Gradual cutover with parallel systems during transition
-**Scope:** Full backend replacement (amplify-backend → Segwik)
 
----
+**Scope:** Full backend replacement (amplify-backend → Segwik)
 
 ## Key Design Principle: Idempotent Scripts
 
