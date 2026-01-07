@@ -39,5 +39,5 @@ cp .env.example .env  # Add API credentials
 
 ## Related Repos
 
-- **amplify-react-native** - Mobile app (will not change during migration)
-- **amplify-backend** - API gateway (will be updated in Phase 5)
+- **[amplify-react-native](https://github.com/seven-stars-software/amplify-audiobooks-react-native)** - Mobile app (will not change during migration)
+- **[amplify-backend](https://github.com/seven-stars-software/amplify-backend)** - API gateway (will be updated in Phase 5)
