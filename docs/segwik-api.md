@@ -32,16 +32,55 @@ Auth: API key passed in request body as `token`
 | Issue | Description | Status |
 |-------|-------------|--------|
 | No customer fetch by ID | `GET /customer/{id}` doesn't exist | Reported |
-| Phone lookup broken | `/customer/lookup/{token}/{phone}` returns `is_customer_exist: false` for valid customers | Reported |
+| Phone lookup broken | `/customer/lookup/{token}/{phone}` returns `is_customer_exist: false` for valid customers | **RESOLVED** - use `phone_json` |
 | `wordpress_user_id` not visible | Field not returned in any response, can't verify it's stored | Reported |
-| Duplicate customers allowed | Same email/phone can create multiple customer records | Reported |
-| `is_exist` always false | Create response shows `is_exist: false` even when customer created | Reported |
+| Duplicate customers allowed | Same email/phone can create multiple customer records | **RESOLVED** - use `phone_json` for upsert |
+| `is_exist` always false | Create response shows `is_exist: false` even when customer created | **RESOLVED** - works with `phone_json` |
 
 **Test customers referenced in email:** 2965632, 2965633 (same email/phone, different IDs)
 
 ---
 
 ## Discovery Log
+
+### 2026-01-14 ~2:45 PM PST
+
+**Session:** JSON fields discovery (info from Shriniwas)
+
+**Key insight from Shriniwas:** Must use `email_json` and `phone_json` array fields, not just top-level `email`/`phone`.
+
+**Findings:**
+1. **Phone lookup NOW WORKS** - Returns full customer data with `is_customer_exist: true`
+2. **List endpoint NOW returns email/phone** - Both `email`, `phone`, `primary_email`, `primary_phone` populated
+3. **UPSERT NOW WORKS** - Same phone returns existing customer! `is_exist: true`, same `customer_id`, message "Lead updated successfully"
+4. **No email lookup endpoint** - `/customer/lookup-email/` doesn't exist (returns HTML)
+5. **List email filter broken** - Filter by email returns all customers, doesn't actually filter
+
+**Test customer:** 2965673 (jcksncllwy+json-test@gmail.com, 5559998888)
+
+**Required payload structure:**
+```json
+{
+    "email": "user@example.com",
+    "email_json": [{ "email": "user@example.com", "is_primary": true, "type": "business" }],
+    "phone_json": [{ "phone": "5559998888", "is_primary": true, "type": "Mobile" }],
+    "firstname": "John",
+    "lastname": "Doe",
+    "custbase_id": 1122,
+    "lead_from": "source"
+}
+```
+
+**Status of previously reported issues:**
+| Issue | New Status |
+|-------|------------|
+| Phone lookup broken | **RESOLVED** - works with `phone_json` |
+| Duplicate customers | **RESOLVED** - upsert works with `phone_json` |
+| `is_exist` always false | **RESOLVED** - returns `true` for existing |
+| No customer fetch by ID | Still no endpoint |
+| `wordpress_user_id` not visible | Untested with new format |
+
+---
 
 ### 2026-01-13 ~8:00 PM PST
 
@@ -323,15 +362,20 @@ These return HTML (Angular app) instead of JSON API response:
 
 ## Persona IDs (custbase_id)
 
-| ID | Persona | Description |
-|----|---------|-------------|
-| 1120 | Author | |
-| 1121 | Publisher | |
-| 1122 | Listener | Default for app users |
-| 1154 | Narrator | |
-| 1158 | Subpub-author | |
+Personas control which UI/dashboard the user sees in Segwik. Set via `custbase_id` field.
 
-**Note:** Customers can have multiple personas via `personas` array field.
+| ID | Persona | PAV Equivalent | Description |
+|----|---------|----------------|-------------|
+| 1120 | Author | Author | Creates audiobook content; has bio/pen name page |
+| 1121 | Publisher | Publisher/Vendor | Business entity that publishes audiobooks |
+| 1122 | Listener | Customer | End user who purchases/listens to audiobooks (default for app) |
+| 1154 | Narrator | Voice Actor | Performs audiobook narration |
+| 1158 | Subpub-author | Sub-publisher Author | Author under a sub-publisher |
+
+**Multiple personas:** A single customer can have multiple personas via the `personas` array field.
+Example: An author who also listens to audiobooks would have `personas: [1120, 1122]`.
+
+**Code constant:** Use `PERSONA.LISTENER`, `PERSONA.AUTHOR`, etc. from `segwik-client.js`.
 
 ---
 
@@ -356,3 +400,4 @@ Results saved to `scripts/discovery/results/`.
 |------|--------|
 | 2026-01-13 | Initial discovery session. Documented customer API issues. Email sent to Pete. |
 | 2026-01-13 | Transaction API tested. `customer_token` = `encrypted_customer_id`. Types: 1=Invoice, 2=Project, 3=Opportunity. |
+| 2026-01-14 | Shriniwas provided `email_json`/`phone_json` fields. Phone lookup, upsert, and list now work correctly. |

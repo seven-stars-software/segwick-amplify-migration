@@ -7,10 +7,10 @@ if (!API_TOKEN) {
 }
 
 const add_customer = async (user) => {
-    
+
     const res = await fetch(USER_PROFILE_ENDPOINT, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             token: API_TOKEN,
             ...user
@@ -24,11 +24,25 @@ const add_customer = async (user) => {
 add_customer({
     firstname: "JACK",
     lastname: "FROST",
-    email: "jcksncllwy+NEWPERSON2@gmail.com",
 
     /** Persona - controls what dashboard looks like, what pages are visible */
-    custbase_id: 1121, //1120=author 1121=publisher 1122=listener 1154=narrator 1158=subpub-author
-    
+    custbase_id: 1122, //1120=author 1121=publisher 1122=listener 1154=narrator 1158=subpub-author
+
+    "email_json": [
+        {
+            "email": "84747@yopmail.com",
+            "is_primary": true,
+            "type": "business"
+        }
+    ],
+    "phone_json": [
+        {
+            "phone": "7476554",
+            "is_primary": true,
+            "type": "Mobile"
+        }
+    ],
+
     //personas: [1120, 1121], //Can have multiple personas
 
     //account_id: 6351, //Staff User that owns customer
