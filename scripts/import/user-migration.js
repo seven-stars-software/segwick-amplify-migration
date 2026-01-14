@@ -1,9 +1,9 @@
 const BASE_API_URL = 'https://api.segwik.com/api/v2';
-const USER_PROFILE_ENDPOINT = `${BASE_API_URL}/customer/profile`;
-const API_KEY = process.env.API_KEY;
+const USER_PROFILE_ENDPOINT = `${BASE_API_URL}/customer/add`;
+const API_TOKEN = process.env.SEGWIK_API_TOKEN;
 
-if (!API_KEY) {
-    throw new Error('API_KEY is not defined in environment variables');
+if (!API_TOKEN) {
+    throw new Error('SEGWIK_API_TOKEN is not defined in environment variables');
 }
 
 const add_customer = async (user) => {
@@ -12,7 +12,7 @@ const add_customer = async (user) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            token: API_KEY,
+            token: API_TOKEN,
             ...user
         }),
     });
@@ -31,11 +31,10 @@ add_customer({
     
     //personas: [1120, 1121], //Can have multiple personas
 
-    account_id: 6351, //Staff User that owns customer
+    //account_id: 6351, //Staff User that owns customer
 
-    user_id: 6352,
-    "lead_from": "zapier",
-    token: "lvvO4bCMosEckiChf9Js"
+    //user_id: 6352,
+    "lead_from": "zapier"
 }).catch(console.error);
 
 /**
