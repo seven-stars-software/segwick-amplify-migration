@@ -1,7 +1,13 @@
 {
-    "name": "amplify-segwick-migration",
+  "name": "amplify-segwik-migration",
   "version": "1.0.0",
   "scripts": {
-    "add-user": "node --env-file=.env user-migration.js"
+    "add-user": "node --env-file=.env scripts/import/user-migration.js",
+    "discover": "node --env-file=.env scripts/discovery/api-explorer.js all",
+    "discover:verify": "node --env-file=.env scripts/discovery/api-explorer.js verify",
+    "discover:create": "node --env-file=.env scripts/discovery/api-explorer.js create",
+    "discover:lookup": "node --env-file=.env scripts/discovery/api-explorer.js lookup",
+    "discover:upsert": "node --env-file=.env scripts/discovery/api-explorer.js upsert",
+    "discover:transaction": "node --env-file=.env scripts/discovery/api-explorer.js transaction"
   }
 }

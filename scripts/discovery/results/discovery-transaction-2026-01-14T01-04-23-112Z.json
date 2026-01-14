@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-01-14T01:04:22.173Z",
+  "token": "lvvO...",
+  "tests": [
+    {
+      "name": "Token Verification",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 481,
+      "data": {
+        "is_customer_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/lookup/0000000000/undefined",
+      "method": "GET",
+      "notes": "Token valid, endpoint responded"
+    },
+    {
+      "name": "POST /customer/transaction/create (minimal)",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 306,
+      "data": "{\"success\":false,\"message\":\"Sorry, we have not found the valid customer for these request.\"}",
+      "url": "https://api.segwik.com/api/v2/customer/transaction/create",
+      "method": "POST",
+      "notes": ""
+    },
+    {
+      "name": "POST /customer/transaction/create (with quote_subject)",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 146,
+      "data": "{\"success\":false,\"message\":\"Sorry, we have not found the valid customer for these request.\"}",
+      "url": "https://api.segwik.com/api/v2/customer/transaction/create",
+      "method": "POST",
+      "notes": ""
+    }
+  ]
+}

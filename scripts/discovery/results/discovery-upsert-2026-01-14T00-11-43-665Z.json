@@ -1,0 +1,115 @@
+{
+  "timestamp": "2026-01-14T00:11:42.313Z",
+  "token": "lvvO...",
+  "tests": [
+    {
+      "name": "Token Verification",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 402,
+      "data": {
+        "is_customer_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/lookup/lvvO4bCMosEckiChf9Js/0000000000",
+      "method": "GET",
+      "notes": "Token valid, endpoint responded"
+    },
+    {
+      "name": "POST /customer/add",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 556,
+      "data": {
+        "customer_id": 2965632,
+        "encrypted_customer_id": "a0FBaTA2aVIrSjFWMVhQcFUxMDlFUT09",
+        "firstname": "Discovery",
+        "lastname": "Test",
+        "phone": "5551234567",
+        "email": "jcksncllwy+segwik-discovery@gmail.com",
+        "lang_ids": null,
+        "user_id": 6352,
+        "user_token": null,
+        "cust_type_id": 1,
+        "contact_type_id": 1,
+        "contact_type_name": "Lead",
+        "qualification_status": null,
+        "company_id": 0,
+        "custbase_id": null,
+        "custbase": "",
+        "is_appointment_in_future": false,
+        "contact_owner": {
+          "user_id": 6352,
+          "cont_name": "Becky Parker",
+          "cont_email": "becky@proaudiovoices.com",
+          "cont_mobile": "415-559-9273",
+          "cont_phone": "415-559-9273",
+          "cont_lname": "Geist",
+          "dial_by_name_pin": null,
+          "twilio": {
+            "sip": {
+              "endpoint": "",
+              "password": "",
+              "username": ""
+            }
+          }
+        },
+        "message": "Lead created successfully.",
+        "success": true,
+        "is_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/add",
+      "method": "POST",
+      "notes": "Create first customer"
+    },
+    {
+      "name": "POST /customer/add (same email, different data)",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 383,
+      "data": {
+        "customer_id": 2965633,
+        "encrypted_customer_id": "Zmk1dGZEVUNzcm1oUWc5bkhSM1Y5dz09",
+        "firstname": "DiscoveryUpdated",
+        "lastname": "Test",
+        "phone": "5551234567",
+        "email": "jcksncllwy+segwik-discovery@gmail.com",
+        "lang_ids": null,
+        "user_id": 6352,
+        "user_token": null,
+        "cust_type_id": 1,
+        "contact_type_id": 1,
+        "contact_type_name": "Lead",
+        "qualification_status": null,
+        "company_id": 0,
+        "custbase_id": null,
+        "custbase": "",
+        "is_appointment_in_future": false,
+        "contact_owner": {
+          "user_id": 6352,
+          "cont_name": "Becky Parker",
+          "cont_email": "becky@proaudiovoices.com",
+          "cont_mobile": "415-559-9273",
+          "cont_phone": "415-559-9273",
+          "cont_lname": "Geist",
+          "dial_by_name_pin": null,
+          "twilio": {
+            "sip": {
+              "endpoint": "",
+              "password": "",
+              "username": ""
+            }
+          }
+        },
+        "message": "Lead created successfully.",
+        "success": true,
+        "is_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/add",
+      "method": "POST",
+      "notes": "Does it update existing or create duplicate?"
+    }
+  ]
+}

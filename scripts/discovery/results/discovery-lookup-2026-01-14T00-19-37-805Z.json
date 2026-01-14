@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-01-14T00:19:37.007Z",
+  "token": "lvvO...",
+  "tests": [
+    {
+      "name": "Token Verification",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 449,
+      "data": {
+        "is_customer_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/lookup/lvvO4bCMosEckiChf9Js/0000000000",
+      "method": "GET",
+      "notes": "Token valid, endpoint responded"
+    },
+    {
+      "name": "GET /customer/lookup/{token}/{phone}",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 341,
+      "data": {
+        "is_customer_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/lookup/lvvO4bCMosEckiChf9Js/5551234567",
+      "method": "GET",
+      "notes": "Documented endpoint"
+    }
+  ]
+}

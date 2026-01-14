@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-01-13T23:21:23.259Z",
+  "token": "lvvO...",
+  "tests": [
+    {
+      "name": "Token Verification",
+      "ok": true,
+      "status": 200,
+      "statusText": "OK",
+      "duration": 456,
+      "data": {
+        "is_customer_exist": false
+      },
+      "url": "https://api.segwik.com/api/v2/customer/lookup/lvvO4bCMosEckiChf9Js/0000000000",
+      "method": "GET",
+      "notes": "Token valid, endpoint responded"
+    }
+  ]
+}
