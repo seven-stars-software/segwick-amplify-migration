@@ -54,13 +54,13 @@ Segwik Customer Linkage:
 
 | # | Requested Name | WC Status | WC ID | Segwik Status | Pen Name Created |
 |---|----------------|-----------|-------|---------------|------------------|
-| 1 | Once Upon a Dance | Product meta only | - | TBD | - |
-| 2 | Kelley Anne Manuel | Vendor (as "Kelly Manuel") | 1373 | Pending | - |
+| 1 | Once Upon a Dance | WP user (Terrel Lefferts) | WP#1274 | Pending | - |
+| 2 | Kelly Anne Manuel | Vendor | 1373 | Pending | - |
 | 3 | Sheldon Collins | Vendor | 3259 | Pending | - |
 | 4 | Dee Knight | Vendor | 3137 | Pending | - |
-| 5 | Dan Flanigan | Product meta only | - | TBD | - |
+| 5 | Dan Flanigan | WP user (Meghan Flanigan) | WP#2928 | Pending | - |
 | 6 | Jessica Beebe | Vendor | 3333 | Pending | - |
-| 7 | Joe Durrette | Vendor (as "Joseph Durette") | 1271 | Pending | - |
+| 7 | Joseph Durette | Vendor | 1271 | Pending | - |
 | 8 | Jacqui Burnett | Vendor | 1927 | Pending | - |
 | 9 | Donna Griffit | Vendor | 1273 | Pending | - |
 | 10 | Parkinson's Foundation | Vendor | 1385 | Pending | - |
@@ -115,19 +115,19 @@ These users exist as WooCommerce Product Vendors and can be migrated directly.
 - **Email:** chermelody@aol.com
 - **Pen Name:** Cheryl Melody Baskin
 
-### 8. Kelly Manuel (requested as "Kelley Anne Manuel")
+### 8. Kelly Anne Manuel
 - **WC ID:** 1373
 - **WC Name:** Kelly Manuel
 - **Email:** kellyannetheresa@icloud.com
-- **Pen Name:** TBD - confirm spelling with PAV team
-- **Question:** Should pen name be "Kelley Anne Manuel" or "Kelly Manuel"?
+- **ACF Data:** Products show "Kelly Anne Manuel" (first: "Kelly Anne", last: "Manuel")
+- **Pen Name:** Kelly Anne Manuel (per ACF data)
 
-### 9. Joseph Durette (requested as "Joe Durrette")
+### 9. Joseph Durette
 - **WC ID:** 1271
 - **WC Name:** Joseph Durette
 - **Email:** wenjoe@cox.net
-- **Pen Name:** TBD - confirm spelling with PAV team
-- **Question:** Should pen name be "Joe Durrette" or "Joseph Durette"?
+- **ACF Data:** Anthology products show "Joseph Durette"
+- **Pen Name:** Joseph Durette (per ACF data)
 
 ---
 
@@ -143,7 +143,12 @@ These names appear as author metadata on products but do NOT have WooCommerce ve
   - `author_last_name`: "a Dance"
   - `author_full_name`: "Once Upon a Dance"
   - `author_bio`: "Once Upon a Dance inspires children to move, breathe & connect. By weaving dance into whimsical stories, this mother-daughter duo sparks imagination and unleashes self-expression. Visit DanceStories.com to learn more."
-- **Question:** Should we create a Segwik customer for this author? Who is the account owner?
+- **RESOLVED:** Real person is **Terrel Lefferts**
+  - WP User ID: 1274
+  - Email: terreld@msn.com
+  - No WC customer record (WP user only)
+- **Pen Name:** Once Upon a Dance
+- **Action:** Create Segwik customer for Terrel Lefferts, then create pen name "Once Upon a Dance"
 
 ### 11. Dan Flanigan
 - **WC Vendor Account:** None
@@ -153,25 +158,28 @@ These names appear as author metadata on products but do NOT have WooCommerce ve
   - `author_last_name`: "Flanigan"
   - `author_full_name`: "Dan Flanigan"
   - `author_bio`: "Dan Flanigan is a novelist, poet, playwright, and practicing lawyer. He has published four books in a detective series (Mink Eyes, The Big Tilt, On Lonesome Roads, An American Tragedy)..."
-- **Question:** Should we create a Segwik customer for this author? What email should be used?
+- **RESOLVED:** Uses daughter **Meghan Flanigan's** account
+  - WP User ID: 2928
+  - Email: mgflanigan@icloud.com
+  - No WC customer record (WP user only)
+  - Meghan manages all of Dan's accounts
+  - Also associated with "Arjuna Media Arts" (connection TBD)
+- **Pen Name:** Dan Flanigan
+- **Action:** Create Segwik customer for Meghan Flanigan, then create pen name "Dan Flanigan"
 
 ---
 
 ## Open Questions for PAV Team
 
-1. **Kelly Manuel** - Should the pen name be "Kelley Anne Manuel" (as requested) or "Kelly Manuel" (as in WC)?
+1. ~~**Kelly Manuel**~~ - **RESOLVED:** ACF product data shows "Kelly Anne Manuel"
 
-2. **Joseph Durette** - Should the pen name be "Joe Durrette" (as requested) or "Joseph Durette" (as in WC)?
+2. ~~**Joseph Durette**~~ - **RESOLVED:** ACF product data shows "Joseph Durette"
 
-3. **Once Upon a Dance** - No WC vendor account exists. Should we:
-   - Create a new Segwik customer? If so, what email/contact info?
-   - Skip for now?
-   - Link to an existing customer?
+3. ~~**Once Upon a Dance**~~ - **RESOLVED:** Link to Terrel Lefferts (terreld@msn.com)
 
-4. **Dan Flanigan** - No WC vendor account exists. Should we:
-   - Create a new Segwik customer? If so, what email/contact info?
-   - Skip for now?
-   - Link to an existing customer?
+4. ~~**Dan Flanigan**~~ - **RESOLVED:** Link to Meghan Flanigan (mgflanigan@icloud.com)
+
+5. **Arjuna Media Arts** - What is Dan Flanigan's connection to this? (FYI only, may not affect migration)
 
 ---
 
@@ -181,14 +189,18 @@ These names appear as author metadata on products but do NOT have WooCommerce ve
 |------|--------|-------|
 | 2026-01-28 | Initial research | Identified 9 WC vendors + 2 product-meta-only authors |
 | 2026-01-28 | Data source decision | Favor ACF product metadata over WC vendor data |
-| 2026-01-28 | WP/WC search | Confirmed Once Upon a Dance & Dan Flanigan have no user accounts |
+| 2026-01-28 | WP/WC search | Confirmed Once Upon a Dance & Dan Flanigan have no WC vendor accounts |
+| 2026-01-28 | PAV call update | Once Upon a Dance = Terrel Lefferts (WP#1274, terreld@msn.com) |
+| 2026-01-28 | PAV call update | Dan Flanigan uses Meghan Flanigan's account (WP#2928, mgflanigan@icloud.com) |
+| 2026-01-28 | ACF data review | Resolved pen name spellings using product ACF data (Kelly Anne Manuel, Joseph Durette) |
+| 2026-01-28 | Orphan authors report | Created script to find authors in product ACF without WP accounts (79 orphans found) |
 
 ---
 
 ## Next Steps
 
-1. [ ] Confirm pen name spellings with PAV team (Kelly/Kelley, Joseph/Joe)
-2. [ ] Decide how to handle Once Upon a Dance and Dan Flanigan
+1. [x] ~~Confirm pen name spellings with PAV team~~ - Using ACF product data as source of truth
+2. [x] ~~Resolve Once Upon a Dance and Dan Flanigan~~ - Both linked to WP user accounts
 3. [ ] Create/verify Segwik customers for each author
 4. [ ] Create pen names in Segwik
 5. [ ] Update this tracking document with Segwik IDs
