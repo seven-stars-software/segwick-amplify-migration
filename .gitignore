@@ -11,6 +11,9 @@ data/migration-results/
 data/transformed/
 data/id-mappings/
 
+# API response cache (regenerated as needed)
+data/cache/
+
 # OS files
 .DS_Store
 
