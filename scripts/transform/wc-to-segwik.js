@@ -85,11 +85,10 @@ function transformCustomer(wcCustomer) {
         custbase_id: persona,
 
         // Required by Segwik (per Pete)
+        // lead_from workaround allows cust_type and creation_method to be set
         cust_type: 84,
         creation_method: 'synced_via_wordpress',
-
-        // Source tracking
-        lead_from: 'zapier',
+        lead_from: 'segwik2 contact detail',
 
         // Store WP user ID for reference
         wordpress_user_id: wcCustomer.id
