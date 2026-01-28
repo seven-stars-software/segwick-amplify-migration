@@ -31,7 +31,7 @@ Auth: API key passed in request body as `token`
 
 | Issue | Description | Status |
 |-------|-------------|--------|
-| No customer fetch by ID | `GET /customer/{id}` doesn't exist | Reported |
+| No customer fetch by ID | `GET /customer/{id}` doesn't exist | **RESOLVED** - use `POST /customer/list` with `customer_id` |
 | Phone lookup broken | `/customer/lookup/{token}/{phone}` returns `is_customer_exist: false` for valid customers | **RESOLVED** - use `phone_json` |
 | `wordpress_user_id` not visible | Field not returned in any response, can't verify it's stored | Reported |
 | Duplicate customers allowed | Same email/phone can create multiple customer records | **RESOLVED** - use `phone_json` for upsert |
@@ -41,7 +41,43 @@ Auth: API key passed in request body as `token`
 
 ---
 
+## Pending Segwik Fixes
+
+Fields being sent via `/customer/add` but not being saved:
+
+| Field | Value | Status |
+|-------|-------|--------|
+| `cust_type` | `84` | Not saved - field name TBD (might be `cust_type_id`?) |
+| `creation_method` | `'synced_via_wordpress'` | Not saved |
+
+**Reported to:** Pete (2026-01-16), awaiting response from Shriniwas.
+
+---
+
 ## Discovery Log
+
+### 2026-01-14 ~3:30 PM PST
+
+**Session:** Additional upsert discovery
+
+**Findings:**
+1. **Email-based upsert WORKS** - Providing existing email in `email_json` updates that customer (can change phone number this way)
+2. **`custbase_id` cannot be updated** - Providing new `custbase_id` in upsert is ignored; response still shows original value
+3. **`/customer/list` doesn't return `custbase_id`** - Persona not included in list response
+
+**Workaround - Use `/customer/add` as "get customer details":**
+```json
+POST /customer/add
+{
+    "token": "API_KEY",
+    "email_json": [{ "email": "existing@example.com", "is_primary": true, "type": "business" }]
+}
+```
+Returns full customer object (including `custbase_id`) without modifying anything.
+
+**Implication:** Email is a valid upsert key! Phone number NOT required for deduplication.
+
+---
 
 ### 2026-01-14 ~2:45 PM PST
 
@@ -52,7 +88,7 @@ Auth: API key passed in request body as `token`
 **Findings:**
 1. **Phone lookup NOW WORKS** - Returns full customer data with `is_customer_exist: true`
 2. **List endpoint NOW returns email/phone** - Both `email`, `phone`, `primary_email`, `primary_phone` populated
-3. **UPSERT NOW WORKS** - Same phone returns existing customer! `is_exist: true`, same `customer_id`, message "Lead updated successfully"
+3. **Upsert works via phone OR email** - Matching `phone_json` or `email_json` returns existing customer
 4. **No email lookup endpoint** - `/customer/lookup-email/` doesn't exist (returns HTML)
 5. **List email filter broken** - Filter by email returns all customers, doesn't actually filter
 
@@ -75,9 +111,9 @@ Auth: API key passed in request body as `token`
 | Issue | New Status |
 |-------|------------|
 | Phone lookup broken | **RESOLVED** - works with `phone_json` |
-| Duplicate customers | **RESOLVED** - upsert works with `phone_json` |
+| Duplicate customers | **RESOLVED** - upsert works with `phone_json` OR `email_json` |
 | `is_exist` always false | **RESOLVED** - returns `true` for existing |
-| No customer fetch by ID | Still no endpoint |
+| No customer fetch by ID | **RESOLVED** - use `/customer/list` with `customer_id` filter |
 | `wordpress_user_id` not visible | Untested with new format |
 
 ---
@@ -315,6 +351,59 @@ Create a transaction (equivalent to WooCommerce order).
 **Untested fields (from Pete's original example):**
 - `company_id` / `blg_company_id` - Not required for basic transactions
 - `transaction_fields.blm_invoice_id` - Custom field mapping, untested
+
+---
+
+### POST /api/v2/content/save
+
+Create or update a CMS page. Used for Pen Names (author aliases).
+
+**Documented in Swagger:** No (from Pete via call)
+**Tested:** Not yet
+
+**Pen Name Payload:**
+```json
+{
+  "page_title": "Elias Khalil",
+  "page_type": "pen",
+  "page_slug": "elias--khalil",
+  "customer_id": 2965715,
+  "template_id": 1216979,
+  "publish": 0,
+  "publish_on": 2147483640,
+  "is_featured": 0,
+  "is_freemium": 1,
+  "s3type": "public",
+  "featured_video_s3type": "private",
+  "json_content": {
+    "custom_fields": {
+      "pen_name_first_name": "Elias",
+      "pen_name_last_name": "Khalil",
+      "pen_name_middle_name": null,
+      "creation_method": "via_website_account_creation",
+      "public_page_type": "author"
+    }
+  }
+}
+```
+
+**Key Fields:**
+
+| Field | Description |
+|-------|-------------|
+| `page_type` | Must be `"pen"` for pen names |
+| `page_title` | Display name (full pen name) |
+| `page_slug` | URL-friendly slug |
+| `customer_id` | Segwik customer who owns this pen name |
+| `template_id` | `1216979` (pen name template) |
+| `page_id` | Include for updates, omit for creates |
+| `json_content.custom_fields.pen_name_first_name` | First name |
+| `json_content.custom_fields.pen_name_last_name` | Last name |
+
+**Notes:**
+- Pen Names connect authors (customers) to books (products)
+- Allows authors to maintain anonymity with aliases
+- Products will reference pen names, not customers directly
 
 ---
 

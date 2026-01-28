@@ -38,15 +38,43 @@ Field-level mapping between source and target systems.
 
 ### User Role → Segwik Persona
 
-| WP Role | WC Vendor? | Segwik Persona | custbase_id |
-|---------|------------|----------------|-------------|
-| subscriber | No | Listener | 1122 |
-| subscriber | Yes (author) | Author | 1120 |
-| subscriber | Yes (publisher) | Publisher | 1121 |
-| - | - | Narrator | 1154 |
-| - | - | Subpub-author | 1158 |
+The WordPress site uses the **WooCommerce Product Vendors** plugin to manage authors and publishers. Role names were discovered by querying the WC REST API with an invalid role, which returned the full list of valid roles in the error response.
 
-**Note:** Users may have multiple personas in Segwik.
+#### Role Counts (as of 2026-01-16)
+
+| WP Role | Count | Segwik Persona | custbase_id |
+|---------|-------|----------------|-------------|
+| `subscriber` | 1,718 | Listener | 1122 |
+| `customer` | 919 | Listener | 1122 |
+| `wc_product_vendors_admin_vendor` | 130 | Author | 1120 |
+| `wc_product_vendors_manager_vendor` | 5 | Publisher | 1121 |
+| `administrator` | 12 | Skip (internal) | - |
+
+#### Role Mapping Logic
+
+```javascript
+function getPersonaFromRole(role) {
+    switch (role) {
+        case 'wc_product_vendors_admin_vendor':
+            return PERSONA.AUTHOR;        // 1120
+        case 'wc_product_vendors_manager_vendor':
+            return PERSONA.PUBLISHER;     // 1121
+        case 'subscriber':
+        case 'customer':
+        default:
+            return PERSONA.LISTENER;      // 1122
+    }
+}
+```
+
+#### Notes
+
+- **Total users**: ~2,784 (excluding administrators)
+- **Listeners** (subscriber + customer): ~2,637 users
+- **Authors** (wc_product_vendors_admin_vendor): 130 users
+- **Publishers** (wc_product_vendors_manager_vendor): 5 users
+- Users may have multiple personas in Segwik, but `custbase_id` cannot be changed after creation
+- Other vendor roles exist (`wc_product_vendors_pending_vendor`, `wc_product_vendors_vendor_author`) but have 0 users
 
 ---
 
