@@ -52,19 +52,19 @@ Segwik Customer Linkage:
 
 ## Summary
 
-| # | Requested Name | WC Status | WC ID | Segwik Status | Pen Name Created |
-|---|----------------|-----------|-------|---------------|------------------|
-| 1 | Once Upon a Dance | WP user (Terrel Lefferts) | WP#1274 | Pending | - |
-| 2 | Kelly Anne Manuel | Vendor | 1373 | Pending | - |
-| 3 | Sheldon Collins | Vendor | 3259 | Pending | - |
-| 4 | Dee Knight | Vendor | 3137 | Pending | - |
-| 5 | Dan Flanigan | WP user (Meghan Flanigan) | WP#2928 | Pending | - |
-| 6 | Jessica Beebe | Vendor | 3333 | Pending | - |
-| 7 | Joseph Durette | Vendor | 1271 | Pending | - |
-| 8 | Jacqui Burnett | Vendor | 1927 | Pending | - |
-| 9 | Donna Griffit | Vendor | 1273 | Pending | - |
-| 10 | Parkinson's Foundation | Vendor | 1385 | Pending | - |
-| 11 | Cheryl Melody Baskin | Vendor | 1971 | Pending | - |
+| # | Requested Name | WC Status | WC ID | Segwik Customer | Pen Name Page |
+|---|----------------|-----------|-------|-----------------|---------------|
+| 1 | Once Upon a Dance | WP user (Terrel Lefferts) | WP#1274 | 2968747 | 1222038 |
+| 2 | Kelly Anne Manuel | Vendor | 1373 | 2968745 | 1222036 |
+| 3 | Sheldon Collins | Vendor | 3259 | 2968738 | 1222029 |
+| 4 | Dee Knight | Vendor | 3137 | 2968739 | 1222030 |
+| 5 | Dan Flanigan | WP user (Meghan Flanigan) | WP#2928 | 2968748 | 1222039 |
+| 6 | Jessica Beebe | Vendor | 3333 | 2968740 | 1222031 |
+| 7 | Joseph Durette | Vendor | 1271 | 2968746 | 1222037 |
+| 8 | Jacqui Burnett | Vendor | 1927 | 2968741 | 1222032 |
+| 9 | Donna Griffit | Vendor | 1273 | 2968742 | 1222033 |
+| 10 | Parkinson's Foundation | Vendor | 1385 | 2968743 | 1222034 |
+| 11 | Cheryl Melody Baskin | Vendor | 1971 | 2968744 | 1222035 |
 
 ---
 
@@ -194,6 +194,7 @@ These names appear as author metadata on products but do NOT have WooCommerce ve
 | 2026-01-28 | PAV call update | Dan Flanigan uses Meghan Flanigan's account (WP#2928, mgflanigan@icloud.com) |
 | 2026-01-28 | ACF data review | Resolved pen name spellings using product ACF data (Kelly Anne Manuel, Joseph Durette) |
 | 2026-01-28 | Orphan authors report | Created script to find authors in product ACF without WP accounts (79 orphans found) |
+| 2026-01-28 | Migration complete | Created 11 Segwik customers and 11 pen names |
 
 ---
 
@@ -201,6 +202,8 @@ These names appear as author metadata on products but do NOT have WooCommerce ve
 
 1. [x] ~~Confirm pen name spellings with PAV team~~ - Using ACF product data as source of truth
 2. [x] ~~Resolve Once Upon a Dance and Dan Flanigan~~ - Both linked to WP user accounts
-3. [ ] Create/verify Segwik customers for each author
-4. [ ] Create pen names in Segwik
-5. [ ] Update this tracking document with Segwik IDs
+3. [x] ~~Create/verify Segwik customers for each author~~ - All 11 customers created
+4. [x] ~~Create pen names in Segwik~~ - All 11 pen names created
+5. [x] ~~Update this tracking document with Segwik IDs~~ - Done
+
+**Migration complete!**
