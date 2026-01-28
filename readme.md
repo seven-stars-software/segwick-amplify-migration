@@ -11,23 +11,30 @@ Migration scripts and documentation for moving Pro Audio Voices from WordPress/W
 
 ## Current Status
 
-**Phase:** 1 - Discovery & API Mapping
+**Phase:** 2 - Customer & Author Migration
+
+- ✅ API discovery complete
+- ✅ Customer migration pipeline working
+- ✅ Special authors batch (11) migrated with pen names
+- 🔄 Remaining author migrations pending
 
 ## Directory Structure
 
 ```
-├── docs/           # Documentation
-├── scripts/
-│   ├── export/     # WP/WC → JSON
-│   ├── transform/  # JSON → Segwik format
-│   ├── import/     # → Segwik
-│   ├── validate/   # Comparison scripts
-│   └── sync/       # Parallel running sync
-├── data/
-│   ├── exports/    # Raw WP/WC exports
-│   ├── transformed/# Segwik-formatted data
-│   └── id-mappings/# WP ID → Segwik ID
-└── logs/           # Import/sync logs
+├── docs/                       # Documentation
+├── src/
+│   ├── segwik-client.js        # Core Segwik API client
+│   ├── migrate-customers.js    # Main orchestrator (export → transform → import)
+│   ├── wp-wc-export/           # Export from WordPress/WooCommerce
+│   ├── wc-wp-to-segwik/        # Transform to Segwik format
+│   ├── segwik-import/          # Import to Segwik API
+│   └── discovery-and-testing/  # One-off scripts, API exploration
+└── data/
+    ├── cache/                  # API response cache (24h TTL)
+    ├── wp-wc-exports/          # Raw WP/WC exports
+    ├── transform-tests/        # Segwik-formatted test data
+    ├── import-tests/           # Import result logs
+    └── one-off-migration-tests/# Migration result logs
 ```
 
 ## Setup
@@ -35,6 +42,23 @@ Migration scripts and documentation for moving Pro Audio Voices from WordPress/W
 ```bash
 npm install
 cp .env.example .env  # Add API credentials
+```
+
+## NPM Scripts
+
+```bash
+# Main migration pipeline
+npm run migrate:customers           # Full pipeline: export → transform → import
+npm run migrate:customers -- --dry-run  # Preview without importing
+
+# Individual steps
+npm run export:customers            # Export WC customers to JSON
+npm run transform <file.json>       # Transform to Segwik format
+npm run import:customers <file.json> # Import to Segwik
+
+# API exploration
+npm run discover                    # Run all API tests
+npm run scratchpad                  # Quick ad-hoc testing
 ```
 
 ## Related Repos
