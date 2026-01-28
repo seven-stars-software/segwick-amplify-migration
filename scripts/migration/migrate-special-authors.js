@@ -163,6 +163,9 @@ async function main() {
                 lastname: lastName,
                 email: author.email,
                 custbase_id: PERSONA.AUTHOR,
+                cust_type: 84,
+                creation_method: 'synced_via_wordpress',
+                lead_from: 'segwik2 contact detail', // Workaround to allow cust_type edit
                 source: 'WC Migration - Special Authors'
             };
 

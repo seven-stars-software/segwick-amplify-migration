@@ -385,7 +385,6 @@ class SegwikClient {
                     pen_name_first_name: firstName,
                     pen_name_last_name: lastName,
                     pen_name_middle_name: middleName,
-                    creation_method: 'synced_via_wordpress',
                     public_page_type: 'author'
                 }
             }
