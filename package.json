@@ -2,12 +2,22 @@
   "name": "amplify-segwik-migration",
   "version": "1.0.0",
   "scripts": {
+    "scratchpad": "node --env-file=.env scripts/discovery/scratchpad.js",
     "add-user": "node --env-file=.env scripts/import/user-migration.js",
     "discover": "node --env-file=.env scripts/discovery/api-explorer.js all",
     "discover:verify": "node --env-file=.env scripts/discovery/api-explorer.js verify",
     "discover:create": "node --env-file=.env scripts/discovery/api-explorer.js create",
     "discover:lookup": "node --env-file=.env scripts/discovery/api-explorer.js lookup",
     "discover:upsert": "node --env-file=.env scripts/discovery/api-explorer.js upsert",
-    "discover:transaction": "node --env-file=.env scripts/discovery/api-explorer.js transaction"
+    "discover:transaction": "node --env-file=.env scripts/discovery/api-explorer.js transaction",
+    "export:customers": "node --env-file=.env scripts/export/export-customers.js",
+    "export:products": "node --env-file=.env scripts/export/export-products.js",
+    "export:orders": "node --env-file=.env scripts/export/export-orders.js",
+    "transform": "node --env-file=.env scripts/transform/wc-to-segwik.js",
+    "import:customers": "node --env-file=.env scripts/import/import-customers.js",
+    "migrate:customers": "node --env-file=.env scripts/migrate-customers.js"
+  },
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1"
   }
 }

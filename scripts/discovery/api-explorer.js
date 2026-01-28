@@ -30,7 +30,7 @@ if (!API_TOKEN) {
 
 const client = new SegwikClient(API_TOKEN);
 
-// Test data - client.createCustomer() will auto-add email_json and phone_json
+// Test data - client.addCustomer() will auto-add email_json and phone_json
 const TEST_CUSTOMER = {
     firstname: 'Discovery',
     lastname: 'Test',
@@ -125,7 +125,7 @@ async function createTestCustomer() {
 
     console.log('  Using email_json and phone_json fields (per Shriniwas)');
 
-    const response = await client.createCustomer(TEST_CUSTOMER);
+    const response = await client.addCustomer(TEST_CUSTOMER);
     logResult('POST /customer/add', response);
 
     if (response.ok && response.data?.customer_id) {
@@ -199,7 +199,7 @@ async function testUpsertBehavior() {
     console.log('='.repeat(60));
 
     console.log('  Creating customer with phone_json...');
-    const firstResponse = await client.createCustomer(TEST_CUSTOMER);
+    const firstResponse = await client.addCustomer(TEST_CUSTOMER);
     logResult('POST /customer/add (first)', firstResponse,
         `customer_id: ${firstResponse.data?.customer_id}, is_exist: ${firstResponse.data?.is_exist}`);
 
@@ -212,7 +212,7 @@ async function testUpsertBehavior() {
         firstname: 'DiscoveryUpdated'
     };
 
-    const secondResponse = await client.createCustomer(modifiedCustomer);
+    const secondResponse = await client.addCustomer(modifiedCustomer);
     logResult('POST /customer/add (second, same phone)', secondResponse,
         `customer_id: ${secondResponse.data?.customer_id}, is_exist: ${secondResponse.data?.is_exist}`);
 
