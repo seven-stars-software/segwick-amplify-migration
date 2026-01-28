@@ -4,7 +4,7 @@ Migration scripts and documentation for moving Pro Audio Voices from WordPress/W
 
 ## Quick Links
 
-- **[Migration Roadmap](MIGRATION_ROADMAP.md)** - Full 8-phase plan
+- **[Migration Status](MIGRATION_STATUS.md)** - Entity-by-entity progress tracker
 - **[Domain Glossary](docs/domain-glossary.md)** - Terminology Rosetta Stone (WC ↔ PAV ↔ Segwik)
 - **[Data Mapping](docs/data-mapping.md)** - Field-level WP/WC → Segwik mapping
 - **[Segwik API Notes](docs/segwik-api.md)** - API documentation and patterns
