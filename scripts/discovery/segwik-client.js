@@ -22,12 +22,106 @@ const PERSONA = {
 };
 
 class SegwikClient {
-    constructor(token) {
+    constructor(token, staffCredentials = null) {
         if (!token) {
             throw new Error('API token is required');
         }
         this.token = token;
         this.baseUrl = BASE_URL;
+
+        // Staff credentials for endpoints requiring Bearer auth (e.g., /content/save)
+        this.staffCredentials = staffCredentials; // { email, password }
+        this.staffJwt = null;
+        this.staffJwtExp = null;
+    }
+
+    /**
+     * Login as staff to get a JWT for Bearer auth.
+     * Required for some endpoints like /content/save.
+     */
+    async staffLogin() {
+        if (!this.staffCredentials) {
+            throw new Error('Staff credentials not configured. Pass { email, password } to constructor.');
+        }
+
+        const response = await fetch(`${this.baseUrl}/staffLogin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: this.staffCredentials.email,
+                password: this.staffCredentials.password
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.data?.token) {
+            throw new Error(`Staff login failed: ${data.message || response.statusText}`);
+        }
+
+        this.staffJwt = data.data.token;
+
+        // Decode JWT to get expiry (payload is second part, base64 encoded)
+        const payload = JSON.parse(Buffer.from(this.staffJwt.split('.')[1], 'base64').toString());
+        this.staffJwtExp = payload.exp * 1000; // Convert to milliseconds
+
+        console.log(`Staff login successful. JWT expires: ${new Date(this.staffJwtExp).toISOString()}`);
+        return data;
+    }
+
+    /**
+     * Get a valid staff JWT, refreshing if needed.
+     */
+    async getStaffJwt() {
+        // Refresh if no token or expiring within 5 minutes
+        const bufferMs = 5 * 60 * 1000;
+        if (!this.staffJwt || !this.staffJwtExp || Date.now() > this.staffJwtExp - bufferMs) {
+            await this.staffLogin();
+        }
+        return this.staffJwt;
+    }
+
+    /**
+     * Make a request with Bearer token auth (for endpoints like /content/save).
+     */
+    async bearerRequest(method, endpoint, body = null) {
+        const jwt = await this.getStaffJwt();
+        const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}${endpoint}`;
+
+        const fetchOptions = {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }
+        };
+
+        if (body) {
+            fetchOptions.body = JSON.stringify(body);
+        }
+
+        const startTime = Date.now();
+        const response = await fetch(url, fetchOptions);
+        const duration = Date.now() - startTime;
+
+        // Try to parse as JSON regardless of content-type (Segwik sometimes returns wrong header)
+        const text = await response.text();
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch {
+            data = text;
+        }
+
+        return {
+            ok: response.ok,
+            status: response.status,
+            statusText: response.statusText,
+            duration,
+            data,
+            url,
+            method
+        };
     }
 
     /**
@@ -143,7 +237,7 @@ class SegwikClient {
      * @param {object} customerData - Customer data (email, phone, firstname, lastname, etc.)
      * @returns {object} - Response with customer_id, encrypted_customer_id, is_exist, etc.
      */
-    async createCustomer(customerData) {
+    async addCustomer(customerData) {
         const formatted = this.formatCustomerData(customerData);
         return this.post('/customer/add', formatted);
     }
@@ -172,6 +266,23 @@ class SegwikClient {
     }
 
     /**
+     * Update a customer by their Segwik customer_id.
+     *
+     * This is the preferred method for upserts - more reliable than email/phone matching.
+     * Pass customer_id to update an existing customer.
+     *
+     * @param {number} customerId - Segwik customer_id
+     * @param {object} customerData - Fields to update
+     * @returns {object} - Updated customer object
+     */
+    async updateCustomerById(customerId, customerData) {
+        return this.post('/customer/add', {
+            customer_id: customerId,
+            ...customerData
+        });
+    }
+
+    /**
      * Signup/login endpoint for end users.
      * @param {object} signupData - { type, firstname, lastname, email, password, cellphone }
      */
@@ -194,6 +305,97 @@ class SegwikClient {
      */
     async createTransaction(transactionData) {
         return this.post('/customer/transaction/create', transactionData);
+    }
+
+    // ============================================================
+    // Content/CMS endpoints
+    // ============================================================
+
+    /**
+     * Create or update a CMS page (including Pen Names).
+     * Requires Bearer auth (staff JWT).
+     *
+     * @param {object} contentData - Full page payload
+     */
+    async saveContent(contentData) {
+        return this.bearerRequest('POST', '/content/save', contentData);
+    }
+
+    /**
+     * Create a Pen Name for an author.
+     *
+     * Pen Names allow authors to publish under aliases. Products link to
+     * pen names rather than directly to customers.
+     *
+     * @param {object} options
+     * @param {number} options.customerId - Segwik customer_id who owns this pen name
+     * @param {string} options.firstName - Pen name first name
+     * @param {string} options.lastName - Pen name last name
+     * @param {string} [options.middleName] - Pen name middle name (optional)
+     * @param {string} [options.pageId] - Include for updates, omit for creates
+     */
+    async createPenName({ customerId, firstName, lastName, middleName = null, pageId = null }) {
+        const fullName = middleName
+            ? `${firstName} ${middleName} ${lastName}`
+            : `${firstName} ${lastName}`;
+
+        const slug = fullName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+        const payload = {
+            page_title: fullName,
+            page_type: 'pen',
+            page_slug: slug,
+            customer_id: customerId,
+            template_id: 1216979,
+            publish: 0,
+            publish_on: 2147483640,
+            is_featured: 0,
+            is_freemium: 1,
+            s3type: 'public',
+            featured_video_s3type: 'private',
+            featured_video: null,
+            tagging: null,
+            custom_flags: '',
+            short_desc: '',
+            content: '',
+            style_css: null,
+            custom_js: null,
+            alt_tag: null,
+            product_id: [],
+            user_id: null,
+            custpersonas: '',
+            cmscat_id: null,
+            cmssubcat_id: null,
+            call_to_action: null,
+            pg_bgimg2: null,
+            star_rating: null,
+            gallery_prod_type: null,
+            website_id: null,
+            meta_title: null,
+            meta_keywords: null,
+            meta_desc: null,
+            og_image: null,
+            og_title: null,
+            og_type: null,
+            og_url: null,
+            image_alt_text: null,
+            og_desc: null,
+            json_content: {
+                custom_fields: {
+                    pen_name_first_name: firstName,
+                    pen_name_last_name: lastName,
+                    pen_name_middle_name: middleName,
+                    creation_method: 'synced_via_wordpress',
+                    public_page_type: 'author'
+                }
+            }
+        };
+
+        if (pageId) {
+            payload.page_id = pageId;
+        }
+
+        return this.saveContent(payload);
     }
 
     // ============================================================
