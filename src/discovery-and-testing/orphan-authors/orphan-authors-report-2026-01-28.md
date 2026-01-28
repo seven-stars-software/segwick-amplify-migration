@@ -1,6 +1,6 @@
 # Orphan Authors Report
 
-**Generated:** 2026-01-28T19:24:18.296Z
+**Generated:** 2026-01-28T23:25:14.498Z
 
 ## Summary
 
@@ -8,27 +8,20 @@
 |--------|-------|
 | Total unique authors in products | 163 |
 | Authors with WP accounts | 84 |
-| Authors without WP accounts (orphans) | 79 |
+| Orphans with CSV email match | 13 |
+| True orphans (no match anywhere) | 66 |
 
 ---
 
-## Orphan Authors
+## True Orphan Authors
 
-These authors appear in product ACF metadata but have no matching WordPress user account.
-They will need:
-1. Email address resolved (ask PAV team)
-2. Segwik customer created
-3. Pen name created linking to that customer
+These authors appear in product ACF metadata but have no matching WordPress user account
+AND no match in the AMPlify client list CSV. **We need help identifying these authors.**
 
 | Author Name | Product Count | Sample Product |
 |-------------|---------------|----------------|
-| Kelly Anne Manuel | 35 | #9352: Modern Day Nursery Rhyme Time Series |
 | Charles Breakfield | 10 | #7290: The Enigma Rising |
-| Once Upon a Dance | 6 | #10451: Frankie's Wish: A Wander in the Wonder |
 | MD | 6 | #7326: The 21st Century Man: Advice from 50 Top Doctors and Men’s Health Experts So You Can Feel Great, Look Good, and Have Better Sex: Parts 1,2, and 3 |
-| Dr. Christina Rahm | 5 | #13036: Remediation of the Land, Air, and Water |
-| Dan Flanigan | 5 | #12872: On Lonesome Roads |
-| Allynn Riggs | 3 | #13533: The Blades: The Stone's Blade: Book Three |
 | jeff jeff jeff | 3 | #10748: Audiobook |
 | Brianna Wiest | 2 | #12114: The Life That's Waiting |
 | PhD and Alan Goldhamer | 2 | #11562: The Pleasure Trap: Mastering the Hidden Force That Undermines Health & Happiness |
@@ -36,7 +29,6 @@ They will need:
 | Tanya Sparks Belvin | 2 | #10653: The Resurrection Project |
 | Piotr Masztalerz | 2 | #10645: The Kingdom of Dust: A sad story about happiness |
 | Dean De Servienti | 2 | #9600: Thrills & Chills Collection 2023 |
-| Maetreyii Ma Nolan | 1 | #13312: Into the Heart of the Infinite: A Spiritual Memoir of an Extraordinary Mystical Journey |
 | Sabrina Alexis Bendory | 1 | #13194: Detached: How to Let Go, Heal, and Become Irresistible |
 | Sheri Thomas | 1 | #13211: Imbalanced: A Memoir |
 | Written by a Full Anthology of Authors and Edited by Roxie Voorhees | 1 | #13184: The Pleasure in Pain: A Queer Horrortica Anthology |
@@ -49,7 +41,6 @@ They will need:
 | Molly Burford | 1 | #12544: Moments To Hold Close |
 | Mhairi Haarsager | 1 | #12451: Moral Injury |
 | M.D. | 1 | #12451: Moral Injury |
-| Brian J Plachta | 1 | #12356: Finding Flow: Spiritual Practices to Reclaim Inner Peace, Balance, and Wholeness |
 | Mose Tuzik Mosley | 1 | #12353: A Journey with Orvis |
 | Jacqueline Whitney | 1 | #12149: All That You Deserve |
 | Human and the Lights | 1 | #11714: Human Justice |
@@ -62,7 +53,6 @@ They will need:
 | Professor Arnold Ehret | 1 | #11553: Mucusless Diet Healing System |
 | Monica Aggarwal MD and Jyothi Rao MD | 1 | #11544: Body on Fire: How Inflammation Triggers Chronic Illness and the Tools We Have to Fight It |
 | Toshia Myers | 1 | #11541: Can Fasting Save Your Life? |
-| Paul D. Corona MD | 1 | #11537: The Corona Protocol |
 | Dee C. Knight | 1 | #11505: My Whirlwind Lives: Navigating Decades of Storms |
 | Julie Hogg and Susan Baer | 1 | #11501: Morning Walker |
 | Traci Musick-Shaffer and Delores Quagliata | 1 | #11498: Just Another Minute |
@@ -71,7 +61,6 @@ They will need:
 | R.W. Gates & Meredith Carson | 1 | #11110: Titanic: The Lost Treasure |
 | Dr. Dawn Filos | 1 | #11107: Tales of a Pet Vet: Stories from the Clinic and House Calls |
 | PhD | 1 | #10974: The Longest War: A Psychotherapist’s Experience of Divorce, Custody, and Power |
-| Nancy J. Martin | 1 | #10955: From the Summer of Love to the Valley of the Moon: A Memoir |
 | Jaer Armstead-Jones | 1 | #10950: My Invisible Father: Turn on the Light to See the Unseen |
 | Eloise Ann Hamann | 1 | #10904: Inhabited: Mysterious Murders |
 | jeff jeff | 1 | #10751: Audiobook Audiobook |
@@ -80,20 +69,16 @@ They will need:
 | Meredith Carson | 1 | #10502: Ghostwriter |
 | R.W. Gates | 1 | #10498: Encoded |
 | Jude Shaw | 1 | #10295: Leaving Dahomey: Friendlytown Trilogy - Volume One |
-| Telile Yoseph | 1 | #10247: The Road to Tangible Hope: an Ethiopian Woman’s Tale of Survival, Strength and Inspiration |
 | Vicky Ramakka | 1 | #9972: The Cactus Plot |
 | Charles Parker | 1 | #9876: The Crow's Nest |
-| Breakfield & Burkey | 1 | #9600: Thrills & Chills Collection 2023 |
 | Carl Gamble | 1 | #9501: My Blue Yonder |
 | Kelly Anne Manual | 1 | #9365: My Name Is Series |
 | Joy Imboden Overstreet | 1 | #9237: The Cherry Pie Paradox: The Surprising Path to Diet Freedom and Lasting Weight Loss |
 | MPH | 1 | #9237: The Cherry Pie Paradox: The Surprising Path to Diet Freedom and Lasting Weight Loss |
 | CJ Thomas | 1 | #9023: TopKnotch: Adventures With Our Clueless Human |
-| Maetreyii Ma - Megan Nolan | 1 | #8962: Dharma for Awakening and Social Change |
 | Brianna Fitzgerald | 1 | #7342: The Road to Healing: Healing Methods to Assist You With Living Your Best Life |
 | David Toledano | 1 | #7341: Don't Fix Your Marriage: Build an Exceptional One by Design |
 | Joel Malkoff | 1 | #7340: Selling Ethically: A Business Parable Connecting Integrity with Profits |
-| Tania Romanov | 1 | #7339: One Hundred Years of Exile: A Romanov's Search for Her Father's Russia |
 | David Carr | 1 | #7337: Where Flows the Creek: a Romp in the eDimension |
 | Bobby Jones and Afdhel Aziz | 1 | #7329: Good Is the New Cool: The Principles of Purpose |
 | Marlena Fiol | 1 | #7327: CALLED A True Story |
@@ -104,46 +89,7 @@ They will need:
 
 ---
 
-## Orphan Authors - Detailed List
-
-### Kelly Anne Manuel
-
-**Products (35):**
-- #9352: Modern Day Nursery Rhyme Time Series
-- #9314: Rainbow's End Series
-- #9312: The Classics Series
-- #9310: The Essentials Series
-- #9291: The Way Teddy
-- #9289: The Need Gnome
-- #9287: The Inclusive All
-- #9285: The Glen of Way Back When
-- #9283: The Emotion Commotion Locomotion
-- #9281: The Still Bee
-- #9279: The Tinker Sleep
-- #9277: The Snow Last
-- #9275: The Loon Ball
-- #9273: The Skate Free
-- #9271: The K-OH!
-- #9269: My Name Is Wing
-- #9248: The Away Cast
-- #9246: The Penny Day Outing
-- #9244: The Library Local
-- #9242: My Name Is Art Fine
-- #9235: The Case Suit
-- #9233: The Loss Total
-- #9231: The Blocks Building
-- #9229: The Tail Fairy
-- #9227: The Boots Rain
-- #9223: The Catcher Dream
-- #9221: The Bear Teddy
-- #9219: The Line Sky
-- #9216: The World Small
-- #9214: The Morning Good
-- #9212: My Name Is Light
-- #9210: The There Barely
-- #9208: The Family Star
-- #9205: The Night Quiet
-- #9203: My Name Is Mountain
+## True Orphan Authors - Detailed List
 
 ### Charles Breakfield
 
@@ -159,16 +105,6 @@ They will need:
 - #7281: The Enigma Beyond
 - #7280: The Enigma Threat
 
-### Once Upon a Dance
-
-**Products (6):**
-- #10451: Frankie's Wish: A Wander in the Wonder
-- #10408: Ella’s Dance Debut
-- #10405: Danika’s Dancing Day
-- #10402: Tammy the Troll: A Dance In The Forest
-- #10399: Eka and the Elephants
-- #8742: Sora Searches for a Song: Little Cricket’s Imagination Journey
-
 ### MD
 
 **Products (6):**
@@ -178,31 +114,6 @@ They will need:
 - #7315: Looking Great for the 21st Century Man: A Man's Guide to Looking Your Best
 - #7314: Mastering Relationship Skills for the 21st Century Man: A Man's Guide to Healthier, Happier, and More Fulfilling Relationships
 - #7313: Mental Health for the 21st Century Man: A Man’s Guide to Breaking Through Mental Clutter for a Happier and Healthier Mindset
-
-### Dr. Christina Rahm
-
-**Products (5):**
-- #13036: Remediation of the Land, Air, and Water
-- #12852: The Roots of Military Science: Understanding the Intersection of Conflict, Mental Health and Wellness
-- #11953: Wellness and Prevention Guide
-- #11854: Getting to the ROOT of the Cause - Part of the Cure the Causes Series
-- #11747: Be Your Own Inspiration - Part of the Cure the Causes Story
-
-### Dan Flanigan
-
-**Products (5):**
-- #12872: On Lonesome Roads
-- #12869: Mink Eyes
-- #12866: The Big Tilt
-- #12570: An American Tragedy: A Peter O'Keefe Novel
-- #12503: Dewdrops: Tales from the Razor's Edge
-
-### Allynn Riggs
-
-**Products (3):**
-- #13533: The Blades: The Stone's Blade: Book Three
-- #12782: The Balance: The Stone's Blade: Book Two
-- #11600: The Blood: The Stone’s Blade: Book One
 
 ### jeff jeff jeff
 
@@ -246,11 +157,6 @@ They will need:
 **Products (2):**
 - #9600: Thrills & Chills Collection 2023
 - #7344: QUANTUM: The Trilogy Begins
-
-### Maetreyii Ma Nolan
-
-**Products (1):**
-- #13312: Into the Heart of the Infinite: A Spiritual Memoir of an Extraordinary Mystical Journey
 
 ### Sabrina Alexis Bendory
 
@@ -312,11 +218,6 @@ They will need:
 **Products (1):**
 - #12451: Moral Injury
 
-### Brian J Plachta
-
-**Products (1):**
-- #12356: Finding Flow: Spiritual Practices to Reclaim Inner Peace, Balance, and Wholeness
-
 ### Mose Tuzik Mosley
 
 **Products (1):**
@@ -377,11 +278,6 @@ They will need:
 **Products (1):**
 - #11541: Can Fasting Save Your Life?
 
-### Paul D. Corona MD
-
-**Products (1):**
-- #11537: The Corona Protocol
-
 ### Dee C. Knight
 
 **Products (1):**
@@ -421,11 +317,6 @@ They will need:
 
 **Products (1):**
 - #10974: The Longest War: A Psychotherapist’s Experience of Divorce, Custody, and Power
-
-### Nancy J. Martin
-
-**Products (1):**
-- #10955: From the Summer of Love to the Valley of the Moon: A Memoir
 
 ### Jaer Armstead-Jones
 
@@ -467,11 +358,6 @@ They will need:
 **Products (1):**
 - #10295: Leaving Dahomey: Friendlytown Trilogy - Volume One
 
-### Telile Yoseph
-
-**Products (1):**
-- #10247: The Road to Tangible Hope: an Ethiopian Woman’s Tale of Survival, Strength and Inspiration
-
 ### Vicky Ramakka
 
 **Products (1):**
@@ -481,11 +367,6 @@ They will need:
 
 **Products (1):**
 - #9876: The Crow's Nest
-
-### Breakfield & Burkey
-
-**Products (1):**
-- #9600: Thrills & Chills Collection 2023
 
 ### Carl Gamble
 
@@ -512,11 +393,6 @@ They will need:
 **Products (1):**
 - #9023: TopKnotch: Adventures With Our Clueless Human
 
-### Maetreyii Ma - Megan Nolan
-
-**Products (1):**
-- #8962: Dharma for Awakening and Social Change
-
 ### Brianna Fitzgerald
 
 **Products (1):**
@@ -531,11 +407,6 @@ They will need:
 
 **Products (1):**
 - #7340: Selling Ethically: A Business Parable Connecting Integrity with Profits
-
-### Tania Romanov
-
-**Products (1):**
-- #7339: One Hundred Years of Exile: A Romanov's Search for Her Father's Russia
 
 ### David Carr
 
@@ -574,7 +445,29 @@ They will need:
 
 ---
 
-## Matched Authors
+## Orphans with CSV Match (Ready to Migrate)
+
+These authors have no WP account but were found in the AMPlify client list CSV.
+We can migrate these using the email from CSV.
+
+| Author Name | CSV Client | Email | Products |
+|-------------|------------|-------|----------|
+| Kelly Anne Manuel | Kelly Anne Manuel | Kellyannetheresa@icloud.com | 35 |
+| Once Upon a Dance | Terrel Lefferts | terreld@msn.com | 6 |
+| Dr. Christina Rahm | Dylan Craven | dylan@therootbrands.com | 5 |
+| Dan Flanigan | Dan Flanigan | mgflanigan@icloud.com | 5 |
+| Allynn Riggs | Alberta Riggs | timberdarkpublications@gmail.com | 3 |
+| Maetreyii Ma Nolan | Megan (Maetreyii) Nolan | maetreyii@comcast.net | 1 |
+| Brian J Plachta | Brian Plachta | brian@brianplachta.com | 1 |
+| Paul D. Corona MD | PAUL CORONA | drcorona@drpaulcoronamd.com | 1 |
+| Nancy J. Martin | Nancy Martin | nmartin2810@comcast.net | 1 |
+| Telile Yoseph | Janet Dean | dean4fish@aol.com | 1 |
+| Breakfield & Burkey | Charles & Rox Breakfield & Burkey | authors@enigmaseries.com | 1 |
+| Maetreyii Ma - Megan Nolan | Megan (Maetreyii) Nolan | maetreyii@comcast.net | 1 |
+| Tania Romanov | Tania Romanov | tamochaev@me.com | 1 |
+---
+
+## Matched Authors (WP accounts)
 
 These authors have matching WordPress user accounts.
 

@@ -10,6 +10,9 @@ data/import-tests/
 data/one-off-migration-tests/
 data/transform-tests/
 
+# Client data exports (contains PII)
+*.csv
+
 # API response cache (regenerated as needed)
 data/cache/
 

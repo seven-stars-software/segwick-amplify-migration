@@ -17,6 +17,7 @@
     "migrate:customers": "node --env-file=.env src/migrate-customers.js"
   },
   "dependencies": {
-    "@woocommerce/woocommerce-rest-api": "^1.0.1"
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "csv-parse": "^6.1.0"
   }
 }
