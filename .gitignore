@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment (contains secrets)
+.env
+
+# Test/scratch data (not part of migration deliverables)
+data/exports/
+data/import-results/
+data/migration-results/
+data/transformed/
+data/id-mappings/
+
+# OS files
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+.idea/
+.vscode/
