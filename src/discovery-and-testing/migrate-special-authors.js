@@ -12,8 +12,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const SegwikClient = require('../discovery/segwik-client');
-const { PERSONA } = require('../discovery/segwik-client');
+const SegwikClient = require('../segwik-client');
+const { PERSONA } = require('../segwik-client');
 
 const dryRun = process.argv.includes('--dry-run');
 

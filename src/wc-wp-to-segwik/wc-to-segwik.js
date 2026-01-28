@@ -13,7 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { PERSONA } = require('../discovery/segwik-client');
+const { PERSONA } = require('../segwik-client');
 
 // Parse arguments
 const args = process.argv.slice(2);

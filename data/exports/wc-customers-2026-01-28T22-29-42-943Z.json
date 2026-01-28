@@ -1,0 +1,79 @@
+[
+  {
+    "id": 2123,
+    "date_created": "2024-01-28T10:25:55",
+    "date_created_gmt": "2024-01-28T18:25:55",
+    "date_modified": null,
+    "date_modified_gmt": null,
+    "email": "Smsheridan565@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "role": "subscriber",
+    "username": ".com",
+    "billing": {
+      "first_name": "",
+      "last_name": "",
+      "company": "",
+      "address_1": "",
+      "address_2": "",
+      "city": "",
+      "postcode": "",
+      "country": "",
+      "state": "",
+      "email": "",
+      "phone": ""
+    },
+    "shipping": {
+      "first_name": "",
+      "last_name": "",
+      "company": "",
+      "address_1": "",
+      "address_2": "",
+      "city": "",
+      "postcode": "",
+      "country": "",
+      "state": "",
+      "phone": ""
+    },
+    "is_paying_customer": false,
+    "avatar_url": "https://secure.gravatar.com/avatar/ae4e6522c57a2db2048f737ec7359f7d530311a206ade1fd14f748a6fd0c1903?s=96&d=mm&r=g",
+    "meta_data": [
+      {
+        "id": 56245,
+        "key": "itsec-password-strength",
+        "value": "1"
+      },
+      {
+        "id": 100985,
+        "key": "wc_order_count_m65h6",
+        "value": "0"
+      },
+      {
+        "id": 100986,
+        "key": "wc_money_spent_m65h6",
+        "value": "0"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://proaudiovoices.com/wp-json/wc/v3/customers/2123",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://proaudiovoices.com/wp-json/wc/v3/customers"
+        }
+      ]
+    }
+  }
+]

@@ -10,7 +10,7 @@
  *   node --env-file=.env scripts/migration/update-special-authors.js
  */
 
-const SegwikClient = require('../discovery/segwik-client');
+const SegwikClient = require('../segwik-client');
 
 // Customer IDs from previous migration
 const CUSTOMERS = [

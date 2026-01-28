@@ -5,11 +5,10 @@ node_modules/
 .env
 
 # Test/scratch data (not part of migration deliverables)
-data/exports/
-data/import-results/
-data/migration-results/
-data/transformed/
-data/id-mappings/
+data/wp-wc-exports/
+data/import-tests/
+data/one-off-migration-tests/
+data/transform-tests/
 
 # API response cache (regenerated as needed)
 data/cache/

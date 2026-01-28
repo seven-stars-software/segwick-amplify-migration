@@ -17,7 +17,7 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const { api, fetchAllPages } = require('../export/wc-client');
+const { api, fetchAllPages } = require('../wp-wc-export/wc-client');
 
 const WP_URL = process.env.WP_URL;
 const WP_ADMIN_USERNAME = process.env.WP_ADMIN_USERNAME;

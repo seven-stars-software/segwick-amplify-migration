@@ -17,8 +17,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const SegwikClient = require('./segwik-client');
-const { PERSONA } = require('./segwik-client');
+const SegwikClient = require('../segwik-client');
+const { PERSONA } = require('../segwik-client');
 
 // Load token from environment
 const API_TOKEN = process.env.SEGWIK_API_TOKEN;

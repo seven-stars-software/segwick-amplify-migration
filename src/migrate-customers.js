@@ -13,9 +13,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const { exportCustomers } = require('./export/export-customers');
-const { transformCustomer } = require('./transform/wc-to-segwik');
-const { importCustomers } = require('./import/import-customers');
+const { exportCustomers } = require('./wp-wc-export/export-customers');
+const { transformCustomer } = require('./wc-wp-to-segwik/wc-to-segwik');
+const { importCustomers } = require('./segwik-import/import-customers');
 
 // Parse arguments
 const args = process.argv.slice(2);

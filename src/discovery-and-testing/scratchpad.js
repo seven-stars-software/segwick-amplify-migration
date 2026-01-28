@@ -1,5 +1,5 @@
-const SegwikClient = require('./segwik-client');
-const { PERSONA } = require('./segwik-client');
+const SegwikClient = require('../segwik-client');
+const { PERSONA } = require('../segwik-client');
 const client = new SegwikClient(process.env.SEGWIK_API_TOKEN);
 
 const TEST_CUSTOMER = {
